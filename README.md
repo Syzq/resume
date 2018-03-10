@@ -1,1 +1,1 @@
-下载 PDF：https://github.com/Syzq/resume/blob/master/resume/resume.pdf
+PDF预览：https://github.com/Syzq/resume/blob/master/resume/resume.pdf
