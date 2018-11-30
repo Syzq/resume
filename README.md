@@ -1,3 +1,4 @@
-PDF下载：https://github.com/Syzq/resume/blob/master/resume/resume.pdf
+## 一个极简的 todolist
 
-![](http://ww1.sinaimg.cn/large/006djCGZgy1fpa6lb7k10j31wx2pgdym.jpg)
+- 前端基于 react + antd 进行简单视图搭建
+- 后端基于 golang + mysql 提供 api 和数据存储

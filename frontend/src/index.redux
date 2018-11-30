@@ -1,0 +1,113 @@
+import React, { Component } from 'react'
+// import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import { connect, Provider } from 'react-redux'
+
+// // 0. 创建计数器组件
+// class Counter extends Component {
+//   render() {
+//     const { value, onIncreaseClick } = this.props
+//     return (
+//       <div>
+//         <span>{value}</span>
+//         <button onClick={onIncreaseClick}>Increase</button>
+//       </div>
+//     )
+//   }
+// }
+
+// // 1. 定义value 到 state 的映射，以及onIncreaseClick到dispatch 的映射
+// function mapStateToProps(state) {
+//   return {
+//     value: state.count
+//   }
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     onIncreaseClick: () => dispatch(increaseAction)
+//   }
+// }
+// //action creator
+// const increaseAction = { type: 'increase' }
+
+// // 2. 使用connect 方法生成容器组件
+// const App = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Counter)
+
+// // 3. 定义这个组件的 redrcer
+// function counter(state = { count: 0 }, action) {
+//   const count = state.count
+//   switch (action.type) {
+//     case 'increase':
+//       return { count: count + 1 }
+//     default:
+//       return state
+//   }
+// }
+
+// // 4. 最后，生成store对象，并使用Provider在根组件外面包一层
+// const store = createStore(counter)
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('root')
+// )
+
+class Counter extends Component {
+  render() {
+    const { value, handleAdd } = this.props
+    return (
+      <div>
+        <span>{value}</span>
+        <button onClick={handleAdd}>+</button>
+      </div>
+    )
+  }
+}
+
+//Action
+const addAction = { type: 'ADD' }
+
+// Store
+const store = createStore(reducer)
+
+function reducer(state = { count: 1 }, action) {
+  const count = state.count
+  switch (action.type) {
+    case 'ADD':
+      return {
+        count: count + 1
+      }
+    default:
+      return state
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleAdd: () => dispatch(addAction)
+  }
+}
+function mapStateToProps(state) {
+  return {
+    value: state.count
+  }
+}
+
+const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
